@@ -15,8 +15,8 @@ class __TwigTemplate_d92d9c8f16b5c8f33823c0ee5fa6efb163399e1ef50774e888e5eb5fb25
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6f9fde776efcbd4d167492b63e3eff611bb2f1a870e64b9a6c675c04f59236f8 = $this->env->getExtension("native_profiler");
-        $__internal_6f9fde776efcbd4d167492b63e3eff611bb2f1a870e64b9a6c675c04f59236f8->enter($__internal_6f9fde776efcbd4d167492b63e3eff611bb2f1a870e64b9a6c675c04f59236f8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/cita.html.twig"));
+        $__internal_a32251c71999bc878a21651fa58858c4093da1b9509c47b17ea84edab1997dea = $this->env->getExtension("native_profiler");
+        $__internal_a32251c71999bc878a21651fa58858c4093da1b9509c47b17ea84edab1997dea->enter($__internal_a32251c71999bc878a21651fa58858c4093da1b9509c47b17ea84edab1997dea_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/cita.html.twig"));
 
         // line 1
         echo "<html>
@@ -36,20 +36,60 @@ class __TwigTemplate_d92d9c8f16b5c8f33823c0ee5fa6efb163399e1ef50774e888e5eb5fb25
         echo "</h1>
 \t\t<form class=\"cita\" name=\"form\" action=\"cita.php\" method=\"post\">
 \t\t\t<label class=\"texto\">Seleccione la fecha en la que desearia sacar una cita:</label>
-\t\t\t<div id=\"div\"></div>
-\t\t\t<h3>";
+\t\t\t";
+        // line 12
+        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start');
+        echo "
+\t\t\t";
         // line 13
-        echo twig_escape_filter($this->env, ((array_key_exists("tabla", $context)) ? (_twig_default_filter((isset($context["tabla"]) ? $context["tabla"] : $this->getContext($context, "tabla")), "")) : ("")), "html", null, true);
-        echo "</h3>
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "dueDate", array()), 'widget');
+        echo "
 \t\t\t";
         // line 14
-        echo twig_escape_filter($this->env, (isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "html", null, true);
+        if (((isset($context["tabla"]) ? $context["tabla"] : $this->getContext($context, "tabla")) != "")) {
+            // line 15
+            echo "\t\t\t<table>
+\t\t\t\t<th>Hora</th><th>fecha</th>
+\t\t\t
+\t\t\t\t<div id=\"div\">";
+            // line 18
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(((array_key_exists("tabla", $context)) ? (_twig_default_filter((isset($context["tabla"]) ? $context["tabla"] : $this->getContext($context, "tabla")), " ")) : (" ")));
+            foreach ($context['_seq'] as $context["_key"] => $context["citas"]) {
+                // line 19
+                echo "\t\t\t\t<tr>
+\t\t\t\t\t<td>";
+                // line 20
+                echo twig_escape_filter($this->env, $this->getAttribute($context["citas"], "hora", array()), "html", null, true);
+                echo "</td>
+\t\t\t\t\t<td>";
+                // line 21
+                echo twig_escape_filter($this->env, $this->getAttribute($context["citas"], "fecha", array()), "html", null, true);
+                echo "</td>
+\t\t\t\t</tr>\t\t
+\t\t\t";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['citas'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 23
+            echo "</div>
+\t\t\t</table>
+\t\t\t";
+        }
+        // line 26
+        echo "\t\t\t";
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "reservar", array()), 'widget');
+        echo "
+\t\t\t";
+        // line 27
+        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
 \t\t</form>
 \t</body>
 </html>";
         
-        $__internal_6f9fde776efcbd4d167492b63e3eff611bb2f1a870e64b9a6c675c04f59236f8->leave($__internal_6f9fde776efcbd4d167492b63e3eff611bb2f1a870e64b9a6c675c04f59236f8_prof);
+        $__internal_a32251c71999bc878a21651fa58858c4093da1b9509c47b17ea84edab1997dea->leave($__internal_a32251c71999bc878a21651fa58858c4093da1b9509c47b17ea84edab1997dea_prof);
 
     }
 
@@ -65,7 +105,7 @@ class __TwigTemplate_d92d9c8f16b5c8f33823c0ee5fa6efb163399e1ef50774e888e5eb5fb25
 
     public function getDebugInfo()
     {
-        return array (  46 => 14,  42 => 13,  35 => 9,  27 => 4,  22 => 1,);
+        return array (  86 => 27,  81 => 26,  76 => 23,  67 => 21,  63 => 20,  60 => 19,  56 => 18,  51 => 15,  49 => 14,  45 => 13,  41 => 12,  35 => 9,  27 => 4,  22 => 1,);
     }
 }
 /* <html>*/
@@ -79,9 +119,22 @@ class __TwigTemplate_d92d9c8f16b5c8f33823c0ee5fa6efb163399e1ef50774e888e5eb5fb25
 /* 		<h1>Bienvenido: {{usuario}}</h1>*/
 /* 		<form class="cita" name="form" action="cita.php" method="post">*/
 /* 			<label class="texto">Seleccione la fecha en la que desearia sacar una cita:</label>*/
-/* 			<div id="div"></div>*/
-/* 			<h3>{{tabla|default('')}}</h3>*/
-/* 			{{form}}*/
+/* 			{{ form_start(form) }}*/
+/* 			{{ form_widget(form.dueDate) }}*/
+/* 			{% if tabla != "" %}*/
+/* 			<table>*/
+/* 				<th>Hora</th><th>fecha</th>*/
+/* 			*/
+/* 				<div id="div">{% for citas in tabla | default(' ') %}*/
+/* 				<tr>*/
+/* 					<td>{{citas.hora}}</td>*/
+/* 					<td>{{citas.fecha}}</td>*/
+/* 				</tr>		*/
+/* 			{%endfor%}</div>*/
+/* 			</table>*/
+/* 			{% endif %}*/
+/* 			{{ form_widget(form.reservar) }}*/
+/* 			{{ form_end(form) }}*/
 /* 		</form>*/
 /* 	</body>*/
 /* </html>*/

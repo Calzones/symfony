@@ -9,9 +9,22 @@
 		<h1>Bienvenido: {{usuario}}</h1>
 		<form class="cita" name="form" action="cita.php" method="post">
 			<label class="texto">Seleccione la fecha en la que desearia sacar una cita:</label>
-			<div id="div"></div>
-			<h3>{{tabla|default('')}}</h3>
-			{{form}}
+			{{ form_start(form) }}
+			{{ form_widget(form.dueDate) }}
+			{% if tabla != "" %}
+			<table>
+				<th>Hora</th><th>fecha</th>
+			
+				<div id="div">{% for citas in tabla | default(' ') %}
+				<tr>
+					<td>{{citas.hora}}</td>
+					<td>{{citas.fecha}}</td>
+				</tr>		
+			{%endfor%}</div>
+			</table>
+			{% endif %}
+			{{ form_widget(form.reservar) }}
+			{{ form_end(form) }}
 		</form>
 	</body>
 </html>
