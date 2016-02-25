@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>Iniciar sesion</title>
+		<link rel="stylesheet" href="{{asset('bundles/framework/css/stilo.css')}}"/>
+		<script type="text/javascript" src="script.js"></script>
+		<meta charset="UTF-8">
+	</head>
+	<body onload="borrarCookies();">
+		<div class="contenedor">
+			<div class="inicio">
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			{{ form_end(form) }}
+		</div>
+		<h3>{{mensajito | default('')}}</h3>
+		<footer>{{footer}}</footer>
+	</body>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="peluqueria/app"/>
+	<buildpathentry kind="src" path="peluqueria/src/AppBundle"/>
+	<buildpathentry kind="src" path="peluqueria/tests/AppBundle/Controller"/>
+	<buildpathentry kind="src" path="peluqueria/var"/>
+	<buildpathentry kind="src" path="peluqueria/vendor"/>
+	<buildpathentry kind="src" path="peluqueria/web"/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+</buildpath>
