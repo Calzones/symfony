@@ -12,13 +12,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller {
 	/**
-	 * @Route("/", name="prueba")
+	 * @Route("/", name="inicio")
 	 */
 	public function daIgualElNombreDeEstaFuncionPorqueNadieLaVaALlamarNuncaPeroSinEmbargoLaMuyPutaSeEjecutaCadaVez(Request $request) {
 		$id = array ();
-		$form = $this->createFormBuilder ( $id )->add ( 'Usuario', TextType::class )->add ( 'Contrasenia', PasswordType::class )->add ( 'enviar', SubmitType::class, array (
-				'label' => 'Iniciar sesion' 
-		) )->getForm ();
+		$form = $this->createFormBuilder ( $id )
+					//->setMethod("POST")
+					//->setAction("")
+					->add ( 'Usuario', TextType::class )
+					->add ( 'Contrasenia', PasswordType::class )
+					->add ( 'enviar', SubmitType::class, array ('label' => 'Iniciar sesion')
+				)->getForm ();
 		
 		$form->handleRequest ( $request );
 		
@@ -33,10 +37,7 @@ class DefaultController extends Controller {
 			$products = $query->getResult ();
 			
 			if (isset($products[0])){
-				return $this->render ( "default/cita.html.twig", array (
-						"form" => "",
-						"usuario" => $id ["Usuario"]
-				));
+				return $this->redirect($this->generateUrl("citas", array ("usuario" => $id ["Usuario"])));
 			}else{
 				return $this->render ( "default/inicio.html.twig", array (
 				
@@ -53,14 +54,14 @@ class DefaultController extends Controller {
 				"footer" => "Hola Ana" 
 		) );
 	}
-	
-	function damePurpurina() {
+	/**
+	 * @Route("/citas/{usuario}", name="citas")
+	 */
+	public function damePurpurina(Request $request, $usuario) {
 		$id = array ();
-		$form = $this->createFormBuilder ( $id )->add ( 'Usuario', TextType::class )->add ( 'Contrasenia', PasswordType::class )->add ( 'enviar', SubmitType::class, array (
-				'label' => 'Iniciar sesion'
-		) )->getForm ();
+		$form = $this->createFormBuilder ( $id )->add ( 'reservar', SubmitType::class, array ('label' => 'Reservar'))->getForm ();
 	
-		$form->handleRequest ( $request );
+		$form->handleRequest ($request);
 	
 		if ($form->isSubmitted () && $form->isValid ()) {
 	
@@ -77,6 +78,11 @@ class DefaultController extends Controller {
 			}
 			return new Response ( $cosa );
 		}
+		return $this->render ( "default/inicio.html.twig", array (
+				"usuario" => $usuario,
+				"form" => $form->createView (),
+				"footer" => "Hola Ana"
+		) );
 	}
 }
 
